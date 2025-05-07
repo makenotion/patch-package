@@ -193,6 +193,12 @@ export function applyPatchesForPackage({
         break
       }
       const patchToApply = unappliedPatches[0]
+
+      // the state has extra files in it that currently do not exist
+      if (!patchToApply) {
+        break
+      }
+
       const currentPatchHash = hashFile(
         join(appPath, patchDir, patchToApply.patchFilename),
       )
